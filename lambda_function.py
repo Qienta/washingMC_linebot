@@ -21,8 +21,8 @@ def lambda_handler(event, context):
     handler = WebhookHandler(os.environ['YOUR_CHANNEL_SECRET'])
     
     #query from dynamo DB
-    response = table.query(KeyConditionExpression=Key('id').eq('washer01'),ScanIndexForward=False) # true = ascending, false = descending)
-    broaded = table2.query(KeyConditionExpression=Key('id').eq('washer01'),ScanIndexForward=False)
+    response = table.query(KeyConditionExpression=Key('id').eq('IoT_ID'),ScanIndexForward=False) # true = ascending, false = descending)
+    broaded = table2.query(KeyConditionExpression=Key('id').eq('IoT_ID'),ScanIndexForward=False)
     
     #text status
     status = response['Items'][0]['washer_data']['state'] + " \nTime left  " +  str(response['Items'][0]['washer_data']['minute']) + ":" + str(response['Items'][0]['washer_data']['seconds'])
